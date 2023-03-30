@@ -19,7 +19,7 @@ class ProcessTheClient(threading.Thread):
 	def __init__(self, connection, address):
 		self.connection = connection
 		self.address = address
-		threading.Thread.__init__(self)
+		super().__init__()
 
 	def run(self):
 		rcv=""
@@ -63,7 +63,7 @@ class Server(Process):
 #---------------------------------
 		self.my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.my_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-		Process.__init__(self)
+		super().__init__()
 
 	def run(self):
 		self.my_socket.bind(('0.0.0.0', 8444))
